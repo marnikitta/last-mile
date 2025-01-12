@@ -12,22 +12,24 @@ export default {
             sort
           </button>
         </header>
-        <ul class="todo__list">
-          <li v-for="(item, index) in items" :key="item.id" class="todo-item">
-            <div class="todo-item__group">
-              <checkbox v-model="item.checked"/>
-              <input placeholder="..."
-                     type="text"
-                     @keydown.prevent.enter="addItemAfter(item.id)"
-                     @keydown.prevent.up="moveFocus(index, -1)"
-                     @keydown.prevent.down="moveFocus(index, 1)"
-                     @keydown.delete="removeItem(item.id, true)"
-                     :ref="'input-' + item.id"
-                     v-model="item.text" class="todo-item__input"/>
-            </div>
-            <button class="todo-item__button" @click="removeItem(item.id)">×</button>
-          </li>
-        </ul>
+        <main>
+          <ul class="todo__list">
+            <li v-for="(item, index) in items" :key="item.id" class="todo-item">
+              <div class="todo-item__controls">
+                <checkbox v-model="item.checked"/>
+                <input placeholder="..."
+                       type="text"
+                       @keydown.prevent.enter="addItemAfter(item.id)"
+                       @keydown.prevent.up="moveFocus(index, -1)"
+                       @keydown.prevent.down="moveFocus(index, 1)"
+                       @keydown.delete="removeItem(item.id, true)"
+                       :ref="'input-' + item.id"
+                       v-model="item.text" class="todo-item__input"/>
+              </div>
+              <button class="todo-item__button" @click="removeItem(item.id)">×</button>
+            </li>
+          </ul>
+        </main>
       </section>
     `,
     components: {

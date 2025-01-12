@@ -6,16 +6,16 @@ export default {
             <h2>timer</h2>
             <span class="panel__subtitle" v-if="setsCount">×{{ setsCount }}</span>
           </div>
-          <button v-if="setsCount" @click="setsCount=0">reset</button>
+<!--          <button v-if="setsCount" @click="setsCount=0">reset</button>-->
         </header>
         <main>
           <h3 class="timer__time">{{ timeString }}</h3>
           <div class="timer__controls">
-            <button class="timer__button" @click="startTimer(2)">25:</button>
-            <button class="timer__button" @click="startTimer(5 * 60)">5:</button>
-            <button class="timer__button" @click="startTimer(15 * 60)">15:</button>
-            <button class="timer__button" @click="continueTimer" v-if="wasPaused">Resume</button>
-            <button class="timer__button" @click="pauseTimer" :disabled="!timer" v-else>Pause</button>
+            <button class="button-with-border" @click="startTimer(2)">25:</button>
+            <button class="button-with-border" @click="startTimer(5 * 60)">5:</button>
+            <button class="button-with-border" @click="startTimer(15 * 60)">15:</button>
+            <button class="button-with-border" @click="continueTimer" v-if="wasPaused">Resume</button>
+            <button class="button-with-border" @click="pauseTimer" :disabled="!timer" v-else>Pause</button>
           </div>
         </main>
       </section>
@@ -56,15 +56,15 @@ export default {
                 }
 
                 const delta = Math.round((Date.now() - this.previousTimestamp) / 1000);
-                this.timeSeconds = this.timeSeconds - delta;
-                this.previousTimestamp = Date.now();
-
-                if (this.timeSeconds <= 0) {
+                if (this.timeSeconds - delta <= 0) {
                     this.audio.play();
                     if (this.secondsOnStart === 2) {
                         this.setsCount++;
                     }
                     this.reset();
+                } else {
+                    this.timeSeconds = this.timeSeconds - delta;
+                    this.previousTimestamp = Date.now();
                 }
             }, 1000);
         },

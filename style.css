@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@300..700&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap');
 
 * {
     margin: 0;
@@ -31,8 +31,7 @@ button:hover {
 }
 
 :root {
-    --font-family: "Inter", Sans-Serif;
-    --font-family-mono: 'Fira Code', Monospace;
+    --font-family: "Lato", Sans-Serif;
 }
 
 body {
@@ -48,24 +47,68 @@ body {
 
 .header {
     padding-top: 1rem;
-    margin-bottom: 1rem;
+    margin-bottom: 3rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.cursive {
+    font-style: italic;
+}
+
+.header__menu {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-end;
+    gap: 0.5rem;
 }
 
 .header h1 {
     font-size: 2rem;
+    word-wrap: anywhere;
 }
 
 .container {
     display: flex;
     flex-direction: column;
+    min-width: 17rem;
     /*gap: 4rem;*/
+}
+
+.new-project {
+    max-width: 25rem;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+
+.new-project__description p {
+    margin-bottom: 0.6rem;
+}
+
+.new-project__form {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 1rem;
+}
+
+.new-project__input {
+    width: 100%;
+}
+
+.new-project__description {
+    word-wrap: break-word;
 }
 
 .panels {
     display: flex;
     flex-direction: column-reverse;
     row-gap: 1rem;
-    column-gap: 4rem;
+    column-gap: 2rem;
 }
 
 .panel {
@@ -95,7 +138,7 @@ body {
 }
 
 .panel__header {
-    margin-bottom: 1rem;
+    margin-bottom: 0.5rem;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -114,7 +157,7 @@ body {
 
 .timer__time {
     font-size: 4rem;
-    margin-bottom: 0.2rem;
+    margin-bottom: 0.4rem;
 }
 
 .timer__controls {
@@ -124,8 +167,7 @@ body {
     gap: 0.2rem;
 }
 
-.timer__button {
-    min-width: 2rem;
+.button-with-border {
     padding: 0.1rem 0.4rem;
     border: 1px solid #d1d5db;
     border-radius: 3px;
@@ -156,7 +198,8 @@ body {
     width: 100%;
 }
 
-.todo-item__group {
+.todo-item__controls {
+    flex-grow: 1;
     display: flex;
     flex-direction: row;
     align-items: baseline;
