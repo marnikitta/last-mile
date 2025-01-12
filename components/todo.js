@@ -1,33 +1,41 @@
-import TodoItem from "./todo_item.js"
+import Checkbox from "./chekbox.js";
 
 export default {
     template: `
       <section class="panel">
         <header class="panel__header">
-          <h2>todo</h2>
-          <button class="todo_settings">
+          <div class="panel__title-group">
+            <h2>todo</h2>
+            <span class="panel__subtitle">{{ doneText }}</span>
+          </div>
+          <button @click="sortList">
             sort
           </button>
         </header>
         <ul class="todo__list">
-          <todo-item v-for="item in items" :key="item.id"
-                     v-model:label="item.text"
-                     v-model:checked="item.checked"/>
+          <li v-for="(item, index) in items" :key="item.id" class="todo-item">
+            <div class="todo-item__group">
+              <checkbox v-model="item.checked"/>
+              <input placeholder="..."
+                     type="text"
+                     @keydown.prevent.enter="addItemAfter(item.id)"
+                     @keydown.prevent.up="moveFocus(index, -1)"
+                     @keydown.prevent.down="moveFocus(index, 1)"
+                     @keydown.delete="removeItem(item.id, true)"
+                     :ref="'input-' + item.id"
+                     v-model="item.text" class="todo-item__input"/>
+            </div>
+            <button class="todo-item__button" @click="removeItem(item.id)">×</button>
+          </li>
         </ul>
-        <div class="todo__add">
-          <input type="text"
-                 minlength="3"
-                 maxlength="50"
-                 placeholder="New todo"/>
-          <button class="todo__button">Add</button>
-        </div>
       </section>
     `,
     components: {
-        TodoItem,
+        Checkbox
     },
     data() {
         return {
+            textInput: "",
             items: [
                 {id: 0, text: "Launch a new labeling session", checked: false},
                 {id: 1, text: "Wait for feedback", checked: true},
@@ -36,4 +44,64 @@ export default {
             ]
         }
     },
+    computed: {
+        doneText() {
+            let checkedCount = this.items.filter(item => item.checked).length
+            return `${checkedCount}/${this.items.length}`
+        }
+    },
+    methods: {
+        addItemAfter(after) {
+            let id = Math.max.apply(null, this.items.map(item => item.id));
+            if (id === -Infinity) {
+                id = 0;
+            } else {
+                id += 1;
+            }
+            this.items.splice(this.items.findIndex(item => item.id === after) + 1, 0, {
+                id: id,
+                text: "",
+                checked: false
+            });
+
+            this.$nextTick(() => {
+                const newInput = this.$refs[`input-${id}`];
+                if (newInput && newInput[0]) {
+                    newInput[0].focus();
+                }
+            });
+        },
+        moveFocus(index, direction) {
+            const newIndex = index + direction;
+            if (newIndex < 0 || newIndex >= this.items.length) {
+                return;
+            }
+
+            const input = this.$refs[`input-${this.items[newIndex].id}`][0];
+            if (input) {
+                input.focus();
+            }
+        },
+        removeItem(id, check = false) {
+            if (check && this.items.find(item => item.id === id).text !== "") {
+                return;
+            }
+
+            if (this.items.length === 1) {
+                // todo: tooltip that we cant delete the last item in the list
+                return;
+            }
+
+            this.moveFocus(this.items.findIndex(item => item.id === id), -1);
+            this.items = this.items.filter(item => item.id !== id);
+        },
+        sortList() {
+            // put unchecked items first, then checked items
+            // keep the original order of checked and unchecked items
+            const checked = this.items.filter(item => item.checked);
+            const unchecked = this.items.filter(item => !item.checked);
+            this.items = unchecked.concat(checked);
+
+        }
+    }
 }

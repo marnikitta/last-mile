@@ -26,6 +26,10 @@ ol, ul, menu {
     list-style: none;
 }
 
+button:hover {
+    cursor: pointer;
+}
+
 :root {
     --font-family: "Inter", Sans-Serif;
     --font-family-mono: 'Fira Code', Monospace;
@@ -44,7 +48,7 @@ body {
 
 .header {
     padding-top: 1rem;
-    margin-bottom: 2rem;
+    margin-bottom: 1rem;
 }
 
 .header h1 {
@@ -54,30 +58,40 @@ body {
 .container {
     display: flex;
     flex-direction: column;
-    gap: 4rem;
+    /*gap: 4rem;*/
 }
 
 .panels {
     display: flex;
     flex-direction: column-reverse;
-    gap: 4rem;
+    row-gap: 1rem;
+    column-gap: 4rem;
+}
+
+.panel {
+    /*min-width: 10rem;*/
+    width: 17rem
+    /*width: 15rem;*/
+    /*padding: 0.51rem 1rem 2rem;*/
+}
+
+.timer {
+    width: 17rem;
 }
 
 @media (min-width: 768px) {
     .panels {
         flex-direction: row;
     }
-}
 
-.panel {
-    min-width: 10rem;
-    /*width: 15rem;*/
-    /*padding: 0.51rem 1rem 2rem;*/
+    .timer {
+        width: 12rem;
+    }
 }
 
 .panel h2 {
     font-size: 1rem;
-    font-weight: bold;
+    font-weight: 700;
 }
 
 .panel__header {
@@ -85,19 +99,25 @@ body {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    align-items: center;
+    align-items: baseline;
 }
 
-.timer {
-    width: 12rem;
+.panel__title-group {
+    display: flex;
+    flex-direction: row;
+    gap: 0.5rem;
+}
+
+.panel__subtitle {
+    font-weight: 200;
 }
 
 .timer__time {
     font-size: 4rem;
-    margin-bottom: 1rem;
+    margin-bottom: 0.2rem;
 }
 
-.timer__buttons-wrapper {
+.timer__controls {
     display: flex;
     flex-direction: row;
     justify-content: flex-start;
@@ -122,7 +142,6 @@ body {
     display: flex;
     flex-direction: column;
     gap: 0.1rem;
-
     margin-bottom: 1rem;
 }
 
@@ -130,24 +149,22 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    gap: 2rem;
+    gap: 1rem;
+}
+
+.todo-item input {
+    width: 100%;
 }
 
 .todo-item__group {
     display: flex;
     flex-direction: row;
-    align-items: center;
+    align-items: baseline;
 }
 
 .todo-item__button {
     padding: 0.1rem;
-}
-
-.todo__add {
-    display: flex;
-    justify-content: space-between;
-    align-items: baseline;
-    width: 100%;
+    font-weight: 200;
 }
 
 .checkbox-button {

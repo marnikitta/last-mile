@@ -11,7 +11,7 @@ const app = createApp({
           <Timer/>
           <TodoList/>
         </div>
-        <Area/>
+<!--        <Area/>-->
         <div>
         </div>
       </div>
