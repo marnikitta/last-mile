@@ -1,4 +1,5 @@
 import Checkbox from "./chekbox.js";
+import {store} from "../store.js";
 
 export default {
     template: `
@@ -19,7 +20,7 @@ export default {
                 <checkbox v-model="item.checked"/>
                 <input placeholder="..."
                        type="text"
-                       @keydown.prevent.enter="addItemAfter(item.id)"
+                       @keydown.prevent.enter="addItem(item.id)"
                        @keydown.prevent.up="moveFocus(index, -1)"
                        @keydown.prevent.down="moveFocus(index, 1)"
                        @keydown.delete="removeItem(item.id, true)"
@@ -34,6 +35,12 @@ export default {
     `,
     components: {
         Checkbox
+    },
+    created() {
+        this.items = store.state.todos;
+        if (this.items.length === 0) {
+            this.addItem(null);
+        }
     },
     data() {
         return {
@@ -53,18 +60,21 @@ export default {
         }
     },
     methods: {
-        addItemAfter(after) {
+        addItem(after = null) {
             let id = Math.max.apply(null, this.items.map(item => item.id));
-            if (id === -Infinity) {
-                id = 0;
-            } else {
-                id += 1;
-            }
-            this.items.splice(this.items.findIndex(item => item.id === after) + 1, 0, {
+            id = id === -Infinity ? 0 : id + 1;
+
+            const newItem = {
                 id: id,
                 text: "",
                 checked: false
-            });
+            }
+
+            if (after !== null) {
+                this.items.splice(this.items.findIndex(item => item.id === after) + 1, 0, newItem);
+            } else {
+                this.items.push(newItem);
+            }
 
             this.$nextTick(() => {
                 const newInput = this.$refs[`input-${id}`];
@@ -104,6 +114,14 @@ export default {
             const unchecked = this.items.filter(item => !item.checked);
             this.items = unchecked.concat(checked);
 
+        }
+    },
+    watch: {
+        items: {
+            handler(newItems) {
+                store.updateTodos(newItems);
+            },
+            deep: true
         }
     }
 }

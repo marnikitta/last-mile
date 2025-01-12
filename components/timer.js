@@ -1,12 +1,14 @@
+import {store} from '../store.js';
+
 export default {
     template: `
       <section class="panel timer">
         <header class="panel__header">
           <div class="panel__title-group">
             <h2>timer</h2>
-            <span class="panel__subtitle" v-if="setsCount">×{{ setsCount }}</span>
+            <span class="panel__subtitle" v-if="completedSets">×{{ completedSets }}</span>
           </div>
-<!--          <button v-if="setsCount" @click="setsCount=0">reset</button>-->
+          <!--          <button v-if="setsCount" @click="setsCount=0">reset</button>-->
         </header>
         <main>
           <h3 class="timer__time">{{ timeString }}</h3>
@@ -22,11 +24,12 @@ export default {
     `,
     created() {
         this.audio = new Audio("/assets/pomodoro-timer.mp3");
+        this.completedSets = store.state.completedSets
     },
     data() {
         return {
             secondsOnStart: 25 * 60,
-            setsCount: 0,
+            completedSets: 0,
             timeSeconds: 25 * 60,
             timer: null,
             wasPaused: false,
@@ -59,7 +62,7 @@ export default {
                 if (this.timeSeconds - delta <= 0) {
                     this.audio.play();
                     if (this.secondsOnStart === 2) {
-                        this.setsCount++;
+                        this.completedSets++;
                     }
                     this.reset();
                 } else {
@@ -82,5 +85,10 @@ export default {
             this.previousTimestamp = null;
             this.wasPaused = false;
         },
+    },
+    watch: {
+        completedSets(newSets) {
+            store.setCompletedSets(newSets);
+        }
     }
 }

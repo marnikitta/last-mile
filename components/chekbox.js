@@ -1,7 +1,7 @@
 export default {
     template: `
       <div class="checkbox-button" @click="toggle(!modelValue)">
-        <input type="checkbox" class="checkbox-button__input"/>
+        <input type="checkbox" v-model=modelValue class="checkbox-button__input"/>
 
         <div class="checkbox-button__square">
           <div class="checkbox-button__checkbox"

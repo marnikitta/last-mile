@@ -30,8 +30,14 @@ button:hover {
     cursor: pointer;
 }
 
+/*placehoder color*/
+input::placeholder {
+    color: var(--light-grey);
+}
+
 :root {
     --font-family: "Lato", Sans-Serif;
+    --light-grey: #d1d5db;
 }
 
 body {
@@ -47,14 +53,15 @@ body {
 
 .header {
     padding-top: 1rem;
-    margin-bottom: 3rem;
+    margin-bottom: 4rem;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
+    gap: 1rem;
 }
 
-.cursive {
+.daily-place {
     font-style: italic;
 }
 
@@ -74,6 +81,7 @@ body {
     display: flex;
     flex-direction: column;
     min-width: 17rem;
+    padding: 0.5rem;
     /*gap: 4rem;*/
 }
 
@@ -81,12 +89,13 @@ body {
     max-width: 25rem;
     display: flex;
     flex-direction: column;
-    gap: 2rem;
+    gap: 3rem;
 }
 
-
-.new-project__description p {
-    margin-bottom: 0.6rem;
+.new-project__spaces {
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
 }
 
 .new-project__form {
@@ -98,22 +107,46 @@ body {
 
 .new-project__input {
     width: 100%;
+    border-bottom: 1px solid var(--light-grey)
+}
+
+.new-project__button {
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 0.15rem;
+    /*color: var(--light-grey);*/
+}
+
+.new-project__spaces-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+}
+
+.new-project__space-entry {
+    display: flex;
+    flex-direction: row;
+    gap: 0.5rem;
 }
 
 .new-project__description {
     word-wrap: break-word;
 }
 
+.new-project__description p {
+    margin-bottom: 0.6rem;
+}
+
 .panels {
     display: flex;
     flex-direction: column-reverse;
-    row-gap: 1rem;
+    row-gap: 2rem;
     column-gap: 2rem;
 }
 
 .panel {
     /*min-width: 10rem;*/
-    width: 17rem
+    /*width: 17rem*/
     /*width: 15rem;*/
     /*padding: 0.51rem 1rem 2rem;*/
 }
@@ -128,7 +161,7 @@ body {
     }
 
     .timer {
-        width: 12rem;
+        width: 17rem;
     }
 }
 
@@ -169,15 +202,14 @@ body {
 
 .button-with-border {
     padding: 0.1rem 0.4rem;
-    border: 1px solid #d1d5db;
+    border: 1px solid var(--light-grey);
     border-radius: 3px;
     font-weight: 700;
 }
 
 .timer__button:disabled {
     /*background-color: #d1d5db;*/
-    border-color: #c8c8c8;
-    color: #c8c8c8;
+    color: var(--light-grey);
 }
 
 .todo__list {
@@ -225,8 +257,8 @@ body {
     justify-content: center;
     align-items: center;
 
-    border: 1px solid #d1d5db;
-    border-radius: 0.25rem;
+    border: 1px solid var(--light-grey);
+    border-radius: 4px;
 
     margin-right: 0.5rem;
     height: 1rem;
@@ -241,16 +273,5 @@ body {
 }
 
 .checkbox-button__checkbox--selected {
-    /*background-color: #5e5e5e;*/
     background-color: black;
-}
-
-.area__text {
-    width: 100%;
-    resize: none;
-    overflow: hidden;
-}
-
-.area__text:focus {
-    outline: none;
 }
