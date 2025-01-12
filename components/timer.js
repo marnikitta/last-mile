@@ -84,8 +84,8 @@ export default {
         reset() {
             if (this.timer) {
                 clearInterval(this.timer);
+                this.timer = null;
             }
-            this.timer = null;
             this.previousTimestamp = null;
             this.wasPaused = false;
         },

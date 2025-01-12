@@ -240,7 +240,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .new-project {
-    max-width: 25rem;
+    /*max-width: 25rem;*/
     display: flex;
     flex-direction: column;
     gap: 3rem;
@@ -288,5 +288,5 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .new-project__description p {
-    margin-bottom: 0.6rem;
+    margin-bottom: 1rem;
 }

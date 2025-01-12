@@ -47,8 +47,10 @@ export default {
           </ul>
           <article class="new-project__description">
             <p>
-              The “Last Mile” is your space for focusing on and progressing through a single task. Each space includes a plain to-do list and a timer.
-              This is not a replacement for a full-fledged task tracker. It’s a tool for tackling one bite-sized task at a time.
+              The “Last mile” is your space for focusing on and progressing through a single task. Each space includes a
+              plain to-do list and a timer.
+              This is not a replacement for a full-fledged task tracker. It’s a tool for tackling one bite-sized task at
+              a time.
             </p>
             <p>
               Spaces are ment to be temporary. Once you’re done with a task, delete the space and move on.
@@ -57,7 +59,7 @@ export default {
               All data is stored locally in your browser’s storage, ensuring simplicity and privacy.
             </p>
             <p>
-              Inspired by <span class="daily-place">daily.place</span> app.
+              It is a shameless copy of an <span class="daily-place">daily.place</span> app.
             </p>
           </article>
         </main>
