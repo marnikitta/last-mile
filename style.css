@@ -26,6 +26,10 @@ ol, ul, menu {
     list-style: none;
 }
 
+button {
+    color: black;
+}
+
 button:hover {
     cursor: pointer;
 }
@@ -205,6 +209,7 @@ body {
     border: 1px solid var(--light-grey);
     border-radius: 3px;
     font-weight: 700;
+    color: black;
 }
 
 .timer__button:disabled {

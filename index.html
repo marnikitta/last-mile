@@ -1,20 +1,40 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Place</title>
+    <title>Last mile</title>
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+    <meta name="description" content="A space for completing a single task">
+    <meta name="author" content="marnikitta">
+
+    <meta property="og:title" content="Last mile app">
+    <meta property="og:description" content="A space for completing a single task">
+    <!--    <meta property="og:image" content="https://livecoding.marnikitta.com/public/og.jpg">-->
+    <meta property="og:url" content="https://mile.marnikitta.com">
+    <meta property="og:type" content="website">
+
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:creator" content="@NMarshalkin">
+    <meta name="twitter:site" content="@NMarshalkin">
+    <meta name="twitter:title" content="Last mile app">
+    <meta name="twitter:description" content="A space for completing a single task">
+    <!--    <meta name="twitter:image" content="https://livecoding.marnikitta.com/public/og.jpg">-->
+    <meta name="twitter:image:alt" content="Live coding editor">
+
+    <link rel="icon" href="/assets/favicon.png">
 
     <script type="importmap">
         {
             "imports": {
-                "vue": "./lib/vue.esm-browser.js"
+                "vue": "./lib/vue.esm-browser.prod.js"
             }
         }
     </script>
 
-    <link rel="stylesheet" href="style.css">
-    <script type="module" src="app.js" defer></script>
+    <link rel="stylesheet" href="style.css?v=1">
+    <script type="module" src="app.js?v=1" defer></script>
     <style>
         #app {
             visibility: hidden;
