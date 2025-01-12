@@ -1,6 +1,6 @@
 export default {
     template: `
-      <div class="container">
+      <div class="page">
         <header class="header">
           <h1>
             Last mile
@@ -47,14 +47,14 @@ export default {
           </ul>
           <article class="new-project__description">
             <p>
-              "Last mile" is space for progressing through single task. It has a timer and a todo list. It is not a
-              replacement for a full-fledged task tracker. It is a tool for focusing on one thing at a time.
+              The “Last Mile” is your space for focusing on and progressing through a single task. Each space includes a plain to-do list and a timer.
+              This is not a replacement for a full-fledged task tracker. It’s a tool for tackling one bite-sized task at a time.
             </p>
             <p>
-              Spaces are ment to be temporary. You can create a new space for a new task, or continue with the last one.
+              Spaces are ment to be temporary. Once you’re done with a task, delete the space and move on.
             </p>
             <p>
-              Everything is stored in browser's local storage.
+              All data is stored locally in your browser’s storage, ensuring simplicity and privacy.
             </p>
             <p>
               Inspired by <span class="daily-place">daily.place</span> app.

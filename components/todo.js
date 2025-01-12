@@ -3,7 +3,7 @@ import {store} from "../store.js";
 
 export default {
     template: `
-      <section class="panel">
+      <section class="panel todo">
         <header class="panel__header">
           <div class="panel__title-group">
             <h2>todo</h2>

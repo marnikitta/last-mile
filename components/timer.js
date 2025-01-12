@@ -6,16 +6,20 @@ export default {
         <header class="panel__header">
           <div class="panel__title-group">
             <h2>timer</h2>
-            <span class="panel__subtitle" v-if="completedSets">×{{ completedSets }}</span>
+            <span class="panel__subtitle">×{{ completedSets }}</span>
           </div>
-          <!--          <button v-if="setsCount" @click="setsCount=0">reset</button>-->
+          <button @click="completedSets=  0">
+            reset
+          </button>
         </header>
         <main>
           <h3 class="timer__time">{{ timeString }}</h3>
           <div class="timer__controls">
-            <button class="button-with-border" @click="startTimer(2)">25:</button>
-            <button class="button-with-border" @click="startTimer(5 * 60)">5:</button>
-            <button class="button-with-border" @click="startTimer(15 * 60)">15:</button>
+            <div class="timer__controls-group">
+              <button class="button-with-border" @click="startTimer(25 * 60)">25:</button>
+              <button class="button-with-border" @click="startTimer(5 * 60)">5:</button>
+              <button class="button-with-border" @click="startTimer(15 * 60)">15:</button>
+            </div>
             <button class="button-with-border" @click="continueTimer" v-if="wasPaused">Resume</button>
             <button class="button-with-border" @click="pauseTimer" :disabled="!timer" v-else>Pause</button>
           </div>
@@ -46,9 +50,7 @@ export default {
     },
     methods: {
         startTimer(time) {
-            if (this.timer) {
-                this.reset()
-            }
+            this.reset()
 
             this.timeSeconds = time
             this.secondsOnStart = time
@@ -61,7 +63,7 @@ export default {
                 const delta = Math.round((Date.now() - this.previousTimestamp) / 1000);
                 if (this.timeSeconds - delta <= 0) {
                     this.audio.play();
-                    if (this.secondsOnStart === 2) {
+                    if (this.secondsOnStart === 25 * 60) {
                         this.completedSets++;
                     }
                     this.reset();
@@ -80,7 +82,9 @@ export default {
             this.wasPaused = true;
         },
         reset() {
-            clearInterval(this.timer);
+            if (this.timer) {
+                clearInterval(this.timer);
+            }
             this.timer = null;
             this.previousTimestamp = null;
             this.wasPaused = false;
