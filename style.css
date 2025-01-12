@@ -1,0 +1,196 @@
+@import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@300..700&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    -webkit-text-size-adjust: none;
+    /*outline: 1px solid red;*/
+}
+
+button, input, select, textarea {
+    font: inherit;
+    background: transparent;
+    border: 0;
+}
+
+input:focus {
+    outline: none;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-size: 1rem;
+}
+
+ol, ul, menu {
+    list-style: none;
+}
+
+:root {
+    --font-family: "Inter", Sans-Serif;
+    --font-family-mono: 'Fira Code', Monospace;
+}
+
+body {
+    height: 100%;
+    font-size: 1rem;
+    font-family: var(--font-family), sans-serif;
+}
+
+#app {
+    display: flex;
+    justify-content: center;
+}
+
+.header {
+    padding-top: 1rem;
+    margin-bottom: 2rem;
+}
+
+.header h1 {
+    font-size: 2rem;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    gap: 4rem;
+}
+
+.panels {
+    display: flex;
+    flex-direction: column-reverse;
+    gap: 4rem;
+}
+
+@media (min-width: 768px) {
+    .panels {
+        flex-direction: row;
+    }
+}
+
+.panel {
+    min-width: 10rem;
+    /*width: 15rem;*/
+    /*padding: 0.51rem 1rem 2rem;*/
+}
+
+.panel h2 {
+    font-size: 1rem;
+    font-weight: bold;
+}
+
+.panel__header {
+    margin-bottom: 1rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.timer {
+    width: 12rem;
+}
+
+.timer__time {
+    font-size: 4rem;
+    margin-bottom: 1rem;
+}
+
+.timer__buttons-wrapper {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    gap: 0.2rem;
+}
+
+.timer__button {
+    min-width: 2rem;
+    padding: 0.1rem 0.4rem;
+    border: 1px solid #d1d5db;
+    border-radius: 3px;
+    font-weight: 700;
+}
+
+.timer__button:disabled {
+    /*background-color: #d1d5db;*/
+    border-color: #c8c8c8;
+    color: #c8c8c8;
+}
+
+.todo__list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.1rem;
+
+    margin-bottom: 1rem;
+}
+
+.todo-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 2rem;
+}
+
+.todo-item__group {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.todo-item__button {
+    padding: 0.1rem;
+}
+
+.todo__add {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    width: 100%;
+}
+
+.checkbox-button {
+    align-items: center;
+    display: inline-flex;
+    cursor: pointer;
+}
+
+.checkbox-button__input {
+    display: none;
+}
+
+.checkbox-button__square {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    border: 1px solid #d1d5db;
+    border-radius: 0.25rem;
+
+    margin-right: 0.5rem;
+    height: 1rem;
+    width: 1rem;
+}
+
+.checkbox-button__checkbox {
+    background-color: transparent;
+    border-radius: 0.1rem;
+    height: 0.5rem;
+    width: 0.5rem;
+}
+
+.checkbox-button__checkbox--selected {
+    /*background-color: #5e5e5e;*/
+    background-color: black;
+}
+
+.area__text {
+    width: 100%;
+    resize: none;
+    overflow: hidden;
+}
+
+.area__text:focus {
+    outline: none;
+}
