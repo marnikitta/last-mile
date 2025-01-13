@@ -62,6 +62,7 @@ export default {
 
                 const delta = Math.round((Date.now() - this.previousTimestamp) / 1000);
                 if (this.timeSeconds - delta <= 0) {
+                    this.timeSeconds = 0;
                     this.audio.play();
                     if (this.secondsOnStart === 25 * 60) {
                         this.completedSets++;
