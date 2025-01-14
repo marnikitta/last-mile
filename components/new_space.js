@@ -1,6 +1,6 @@
 export default {
     template: `
-      <div class="page">
+      <div class="page new-project-page">
         <header class="header">
           <h1>
             Last mile

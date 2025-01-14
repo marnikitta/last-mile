@@ -5,22 +5,24 @@ import {store} from "../store.js"
 
 export default {
     template: `
-      <header class="header">
-        <h1>
-          <template v-if="selectedSpace">{{ selectedSpace }}</template>
-        </h1>
-        <nav>
-          <ul class="header__menu">
-            <li>
-              <button @click="$emit('new-space')">new space</button>
-            </li>
-          </ul>
-        </nav>
-      </header>
-      <main class="panels" v-if="selectedSpace">
-        <Timer/>
-        <TodoList/>
-      </main>
+      <div class="page space-page">
+        <header class="header">
+          <h1>
+            <template v-if="selectedSpace">{{ selectedSpace }}</template>
+          </h1>
+          <nav>
+            <ul class="header__menu">
+              <li>
+                <button @click="$emit('new-space')">new space</button>
+              </li>
+            </ul>
+          </nav>
+        </header>
+        <main class="panels" v-if="selectedSpace">
+          <Timer/>
+          <TodoList/>
+        </main>
+      </div>
     `,
     components: {
         Timer,

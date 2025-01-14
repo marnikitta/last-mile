@@ -4,10 +4,8 @@ import Space from "./components/space.js";
 
 const app = createApp({
     template: `
-      <div class="page">
-        <Space v-if="selectedSpace" :selectedSpace="selectedSpace" @new-space="selectedSpace=null"/>
-        <NewSpace v-else @open-space="openSpace"/>
-      </div>
+      <Space v-if="selectedSpace" :selectedSpace="selectedSpace" @new-space="selectedSpace=null"/>
+      <NewSpace v-else @open-space="openSpace"/>
     `,
     components: {
         Space,
