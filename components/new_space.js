@@ -25,14 +25,14 @@ export default {
                 {{ lastSpace.name }}
               </button>
               , or
-              <button @click="spacesShown=!spacesShown" class="new-project__button">show recent spaces</button>
+              <button @click="spacesShown=!spacesShown" class="new-project__button">view recent spaces</button>
             </div>
           </div>
           <ul class="new-project__spaces-list" v-if="spacesShown && spacesList.length">
             <li class="new-project__space-entry" v-for="space in spacesList">
               <button @click="$emit('open-space', space.name)"
                       class="new-project__button">
-                {{ space.name }}
+                {{ space.name }} ({{ space.completedTasks }}/{{ space.totalTasks }})
               </button>
               ·
               <button @click="downloadSpaceJson(space.name)">download</button>
@@ -91,8 +91,13 @@ export default {
             for (let i = 0; i < localStorage.length; i++) {
                 let key = localStorage.key(i);
                 if (key.startsWith("space-")) {
+                    const spaceData = JSON.parse(localStorage.getItem(key));
+                    const completedTasks = spaceData.todos.filter(task => task.checked).length;
+
                     this.spacesList.push({
-                        name: key.slice(6)
+                        name: key.slice(6),
+                        completedTasks,
+                        totalTasks: spaceData.todos.length,
                     });
                 }
             }
