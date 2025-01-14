@@ -4,7 +4,7 @@ import Space from "./components/space.js";
 
 const app = createApp({
     template: `
-      <Space v-if="selectedSpace" :selectedSpace="selectedSpace" @new-space="selectedSpace=null"/>
+      <Space v-if="selectedSpace" :selectedSpace="selectedSpace" @new-space="openSpace(null)"/>
       <NewSpace v-else @open-space="openSpace"/>
     `,
     components: {
@@ -13,6 +13,15 @@ const app = createApp({
     },
     mounted() {
         document.getElementById("app").classList.add("mounted");
+
+        window.addEventListener("popstate", (event) => {
+            console.log(event)
+            if (event.state) {
+                this.selectedSpace = event.state.selectedSpace
+            } else {
+                this.selectedSpace = null
+            }
+        });
     },
     data() {
         return {
@@ -22,6 +31,11 @@ const app = createApp({
     methods: {
         openSpace(space) {
             this.selectedSpace = space
+            if (!space) {
+                window.history.pushState({selectedSpace: null}, "", "#")
+            } else {
+                window.history.pushState({selectedSpace: space}, "", `#${space}`)
+            }
         },
     },
 });
