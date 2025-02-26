@@ -11,7 +11,7 @@ export default {
             <form @submit.prevent="$emit('open-space', newSpaceInput)" class="new-project__form">
               <input class="new-project__input" type="text"
                      minlength="1"
-                     maxlength="20"
+                     maxlength="30"
                      required
                      v-model="newSpaceInput"
                      autofocus
