@@ -1,7 +1,7 @@
 # Nice guide
 # https://www.olioapps.com/blog/the-lost-art-of-the-makefile
 
-host := livecoding
+host := mile
 deploy_files := assets components lib app.js index.html store.js style.css
 
 all:
