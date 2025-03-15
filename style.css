@@ -1,11 +1,11 @@
 @import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap');
 
+/* Global Reset */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
     -webkit-text-size-adjust: none;
-    /*outline: 1px solid red;*/
 }
 
 button, input, select, textarea {
@@ -34,12 +34,14 @@ input::placeholder {
     color: var(--light-grey);
 }
 
+/* Root Variables */
 :root {
     --font-family: "Lato", Sans-Serif;
     --font-size: 20px;
     --light-grey: #d1d5db;
 }
 
+/* Global Styles */
 html {
     height: 100%;
 }
@@ -56,14 +58,16 @@ h1, h2, h3, h4, h5, h6 {
     font-size: 100%;
 }
 
+/* App Container */
 #app {
     display: flex;
     flex: 1;
     flex-direction: column;
     align-items: stretch;
-    padding: 1rem 1rem;
+    padding: 1rem;
 }
 
+/* Page Layout */
 .page {
     display: flex;
     flex-direction: column;
@@ -75,11 +79,10 @@ h1, h2, h3, h4, h5, h6 {
     justify-content: space-between;
 }
 
-
+/* Header Styles */
 .header {
     flex: 1;
     max-height: 8rem;
-
     margin-bottom: 1rem;
     display: flex;
     flex-direction: row;
@@ -88,6 +91,19 @@ h1, h2, h3, h4, h5, h6 {
     gap: 1rem;
 }
 
+.header h1 {
+    font-size: 2rem;
+    overflow-wrap: anywhere;
+}
+
+.header__menu {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-end;
+    gap: 0.5rem;
+}
+
+/* Panels Layout */
 .panels {
     display: flex;
     flex-direction: column-reverse;
@@ -99,48 +115,32 @@ h1, h2, h3, h4, h5, h6 {
     #app {
         align-items: center;
     }
-
     .page {
         width: 100%;
         max-width: 45rem;
     }
-
     .new-project-page {
         justify-content: flex-start;
     }
-
     .panels {
         flex-direction: row;
     }
-
     .timer {
         flex: 1;
         max-width: 13rem;
     }
-
     .todo {
         flex: 1;
         max-width: 50rem;
     }
 }
 
+/* Text Styles */
 .daily-place {
     font-style: italic;
 }
 
-.header__menu {
-    display: flex;
-    flex-direction: row;
-    align-items: flex-end;
-    gap: 0.5rem;
-}
-
-.header h1 {
-    font-size: 2rem;
-    word-wrap: anywhere;
-}
-
-
+/* Panel Component */
 .panel h2 {
     font-weight: 700;
 }
@@ -151,7 +151,6 @@ h1, h2, h3, h4, h5, h6 {
     flex-direction: row;
     justify-content: space-between;
     align-items: baseline;
-
 }
 
 .panel__title-group {
@@ -164,6 +163,7 @@ h1, h2, h3, h4, h5, h6 {
     font-weight: 200;
 }
 
+/* Timer Component */
 .timer__time {
     font-size: 4rem;
     font-weight: 700;
@@ -184,6 +184,7 @@ h1, h2, h3, h4, h5, h6 {
     gap: 0.2rem;
 }
 
+/* Button Styles */
 .button-with-border {
     padding: 0.1rem 0.4rem;
     border: 1px solid var(--light-grey);
@@ -193,10 +194,10 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .button-with-border:disabled {
-    /*background-color: #d1d5db;*/
     color: var(--light-grey);
 }
 
+/* Todo Component */
 .todo__list {
     display: flex;
     flex-direction: column;
@@ -227,6 +228,7 @@ h1, h2, h3, h4, h5, h6 {
     font-weight: 200;
 }
 
+/* Checkbox Component */
 .checkbox-button {
     align-items: center;
     display: inline-flex;
@@ -241,10 +243,8 @@ h1, h2, h3, h4, h5, h6 {
     display: flex;
     justify-content: center;
     align-items: center;
-
     border: 1px solid var(--light-grey);
     border-radius: 4px;
-
     margin-right: 0.5rem;
     height: 1rem;
     width: 1rem;
@@ -261,8 +261,8 @@ h1, h2, h3, h4, h5, h6 {
     background-color: black;
 }
 
+/* New Project Component */
 .new-project {
-    /*max-width: 25rem;*/
     display: flex;
     flex-direction: column;
     gap: 3rem;
@@ -283,14 +283,13 @@ h1, h2, h3, h4, h5, h6 {
 
 .new-project__input {
     width: 100%;
-    border-bottom: 1px solid var(--light-grey)
+    border-bottom: 1px solid var(--light-grey);
 }
 
 .new-project__button {
     text-decoration: underline;
     text-decoration-thickness: 1px;
     text-underline-offset: 0.15rem;
-    /*color: var(--light-grey);*/
 }
 
 .new-project__spaces-list {
@@ -306,7 +305,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .new-project__description {
-    word-wrap: break-word;
+    overflow-wrap: break-word;
 }
 
 .new-project__description p {
