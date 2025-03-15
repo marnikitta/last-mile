@@ -6,6 +6,8 @@ deploy_files := assets components lib app.js index.html store.js style.css
 
 all:
 
+deploy: push
+
 push:
 	#ssh -T $(host) "mkdir -p ~/last-mile-app"
 	rsync --delete --verbose --archive --compress --rsh=ssh $(deploy_files) $(host):~/last-mile-app
